@@ -19,6 +19,11 @@ int check_empty_inventory() {
 }
 
 void inventory_init() {
+    if (inventory_size > 0) {
+        printf("Votre inventaire n'est pas vide. Vous ne pouvez pas l'initialiser.\n");
+        return;
+    };
+
     printf("Combien d'objets souhaitez-vous enregistrer ?\n");
 
     scanf("%d", &inventory_size);
@@ -54,6 +59,8 @@ void inventory_init() {
 
         inventory_items[i] = tmpItem;
     }
+
+    printf("Objets ajoutés !\n");
 }
 
 void add_item_to_inventory() {
@@ -88,6 +95,8 @@ void display_inventory() {
 }
 
 void update_item_in_inventory() {
+    if (check_empty_inventory() == 1) return;
+
     int index;
 
     printf("Quel objet modifier ? :");
@@ -154,7 +163,7 @@ void reset_inventory() {
     free(inventory_items);
     inventory_items = NULL;
 
-    printf("Réinitialisation de l'inventaire fait avec succès !");
+    printf("Réinitialisation de l'inventaire fait avec succès !\n");
 }
 
 void close_inventory() {
