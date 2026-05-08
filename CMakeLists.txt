@@ -3,4 +3,6 @@ project(adventurer_inventory C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(adventurer_inventory main.c)
+add_executable(adventurer_inventory main.c
+        inventory.c
+        inventory.h)
